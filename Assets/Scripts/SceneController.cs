@@ -9,7 +9,7 @@ namespace UI
 
         public void SceneLoad()
         {
-            SceneManager.LoadScene("SceneName");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
