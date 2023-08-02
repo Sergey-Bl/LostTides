@@ -4,17 +4,16 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float forwardSpeed = 5f; 
+    [SerializeField] private float forwardSpeed = 5f;
     [SerializeField] private float tapForce = 10f;
-    
+
     [SerializeField] private GameOver gameOver;
     [SerializeField] private Record record;
-    
+
     private Rigidbody2D rb;
     private float distanceTraveled = 0f;
     public static float longestDistance { get; private set; } = 0f;
-    // private float longestDistance = 0f;
-    
+
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private TextMeshProUGUI longestDistanceText;
 
@@ -31,10 +30,8 @@ public class PlayerController : MonoBehaviour
         LoadLongestDistance();
         UpdateDistanceDisplay();
 
-        // Вызываем DisplayRecords после загрузки рекорда
         record.DisplayRecords();
     }
-
 
     private void Update()
     {
@@ -44,7 +41,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, tapForce);
         }
-    
+
         distanceTraveled += forwardSpeed * Time.deltaTime;
         UpdateDistanceDisplay();
     }
@@ -53,10 +50,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Obstacle"))
         {
-            HandleGameOver(); 
+            HandleGameOver();
         }
     }
-
 
     private void UpdateDistanceDisplay()
     {

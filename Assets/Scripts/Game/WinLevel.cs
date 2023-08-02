@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WinLevel : MonoBehaviour
 {
-    
-    [SerializeField]private GameObject WinPopUp;
+    [SerializeField] private GameObject WinPopUp;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Win"))
@@ -11,6 +11,7 @@ public class WinLevel : MonoBehaviour
             HandleWin();
         }
     }
+
     private void HandleWin()
     {
         Debug.Log("Win");

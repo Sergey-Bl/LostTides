@@ -11,6 +11,7 @@ namespace UI.Game
         {
             PlayerPrefs.DeleteKey(GameOver.DeadCountKey);
         }
+
         public void RestDistance()
         {
             PlayerPrefs.DeleteKey(PlayerController.LongestDistanceKey);

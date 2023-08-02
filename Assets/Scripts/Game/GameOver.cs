@@ -24,8 +24,6 @@ public class GameOver : MonoBehaviour
         deadCount++;
         UpdateDeadCountDisplay();
         SaveDeadCount();
-        
-        
     }
 
     internal void UpdateDeadCountDisplay()
