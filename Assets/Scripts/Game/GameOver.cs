@@ -5,24 +5,47 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject restartPopUp;
     [SerializeField] private TextMeshProUGUI _deadCountField;
-    
-    private int deadCount;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    internal int deadCount;
+    internal const string DeadCountKey = "DeadCount";
+
+    private void Start()
     {
-        if (collision.collider.CompareTag("Obstacle"))
-        {
-            HandleGameOver();
-        }
+        LoadDeadCount();
+        UpdateDeadCountDisplay();
     }
 
-    private void HandleGameOver()
+    public void HandleGameOver()
     {
         Debug.Log("Game Over");
         restartPopUp.SetActive(true);
         Time.timeScale = 0f;
-        //нужно дописать чтобы при рестарте уровней оставалось кол-во смертей
+
         deadCount++;
+        UpdateDeadCountDisplay();
+        SaveDeadCount();
+    }
+
+    internal void UpdateDeadCountDisplay()
+    {
         _deadCountField.text = ($"x" + deadCount);
+    }
+
+    private void SaveDeadCount()
+    {
+        PlayerPrefs.SetInt(DeadCountKey, deadCount);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadDeadCount()
+    {
+        if (PlayerPrefs.HasKey(DeadCountKey))
+        {
+            deadCount = PlayerPrefs.GetInt(DeadCountKey);
+        }
+        else
+        {
+            deadCount = 0;
+        }
     }
 }
