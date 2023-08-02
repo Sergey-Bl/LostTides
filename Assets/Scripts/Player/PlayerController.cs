@@ -8,15 +8,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tapForce = 10f;
     
     [SerializeField] private GameOver gameOver;
+    [SerializeField] private Record record;
     
     private Rigidbody2D rb;
     private float distanceTraveled = 0f;
-    private float longestDistance = 0f;
+    public static float longestDistance { get; private set; } = 0f;
+    // private float longestDistance = 0f;
     
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private TextMeshProUGUI longestDistanceText;
 
-    private const string LongestDistanceKey = "LongestDistance";
+    internal const string LongestDistanceKey = "LongestDistance";
 
     private void Awake()
     {
@@ -28,7 +30,11 @@ public class PlayerController : MonoBehaviour
         AppMetrica.Instance.ReportEvent("appStarted");
         LoadLongestDistance();
         UpdateDistanceDisplay();
+
+        // Вызываем DisplayRecords после загрузки рекорда
+        record.DisplayRecords();
     }
+
 
     private void Update()
     {
@@ -54,8 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateDistanceDisplay()
     {
-        distanceText.text = $"{distanceTraveled:F2}";
-        longestDistanceText.text = $"Best {longestDistance:F2}";
+        distanceText.text = $"{distanceTraveled:#.#}";
+        longestDistanceText.text = $"Best {longestDistance:#.#}";
     }
 
     private void HandleGameOver()
@@ -66,10 +72,8 @@ public class PlayerController : MonoBehaviour
             SaveLongestDistance();
         }
 
-        distanceTraveled = 0f;
         UpdateDistanceDisplay();
 
-        // Вызываем метод обработки проигрыша в классе GameOver
         gameOver.HandleGameOver();
     }
 
