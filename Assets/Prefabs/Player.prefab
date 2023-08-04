@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 5416574726911625047}
   - component: {fileID: 5416574726911625046}
   - component: {fileID: 5416574726911625049}
+  - component: {fileID: 1688958875}
+  - component: {fileID: 1688958874}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -31,7 +33,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5416574726911625035}
-  m_LocalRotation: {x: -0, y: -0.99525183, z: -0, w: 0.097333536}
+  m_LocalRotation: {x: 0, y: -0.9952521, z: 0, w: 0.09733106}
   m_LocalPosition: {x: -0.7, y: 1.4951, z: -0.014316093}
   m_LocalScale: {x: 0.5900632, y: 0.89760584, z: 2}
   m_ConstrainProportionsScale: 0
@@ -103,6 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 5
   tapForce: 7
+  gameOver: {fileID: 5416574726911625047}
+  record: {fileID: 1688958874}
+  distanceText: {fileID: 0}
+  longestDistanceText: {fileID: 0}
 --- !u!50 &5416574726911625048
 Rigidbody2D:
   serializedVersion: 4
@@ -190,3 +196,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinField: {fileID: 0}
+--- !u!81 &1688958875
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416574726911625035}
+  m_Enabled: 1
+--- !u!114 &1688958874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416574726911625035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94efd0df1804f42949141fe8f27a8523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordText: {fileID: 0}
