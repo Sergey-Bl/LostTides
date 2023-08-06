@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using TMPro;
 
@@ -11,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Record record;
 
     private Rigidbody2D rb;
-    private float distanceTraveled = 0f;
+    private float distanceTraveled;
     public static float longestDistance { get; private set; } = 0f;
 
     [SerializeField] private TextMeshProUGUI distanceText;
