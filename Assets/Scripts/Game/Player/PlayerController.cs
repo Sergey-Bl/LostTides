@@ -72,13 +72,13 @@ public class PlayerController : MonoBehaviour
         gameOver.HandleGameOver();
     }
 
-    private void SaveLongestDistance()
+    public void SaveLongestDistance()
     {
         PlayerPrefs.SetFloat(LongestDistanceKey, longestDistance);
         PlayerPrefs.Save();
     }
 
-    private void LoadLongestDistance()
+    public void LoadLongestDistance()
     {
         if (PlayerPrefs.HasKey(LongestDistanceKey))
         {

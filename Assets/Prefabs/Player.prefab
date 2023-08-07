@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 5416574726911625047}
   - component: {fileID: 5416574726911625046}
   - component: {fileID: 5416574726911625049}
-  - component: {fileID: 1688958875}
   - component: {fileID: 1688958874}
+  - component: {fileID: 2001820884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartPopUp: {fileID: 0}
   _deadCountField: {fileID: 0}
+  playerController: {fileID: 5416574726911625055}
 --- !u!114 &5416574726911625046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,14 +197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinField: {fileID: 0}
---- !u!81 &1688958875
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416574726911625035}
-  m_Enabled: 1
 --- !u!114 &1688958874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +210,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordText: {fileID: 0}
+--- !u!114 &2001820884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416574726911625035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592e4105e2394699958892b6bbbb9718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  soundSource: {fileID: 0}
+  collectCoin: {fileID: 0}
+  tap: {fileID: 0}

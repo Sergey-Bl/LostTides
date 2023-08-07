@@ -6,6 +6,7 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject restartPopUp;
     [SerializeField] private TextMeshProUGUI _deadCountField;
+    [SerializeField] private PlayerController playerController;
     
     private int deadCount;
     internal const string DeadCountKey  = "DeadCount";
@@ -25,6 +26,7 @@ public class GameOver : MonoBehaviour
         deadCount++;
         UpdateDeadCountDisplay();
         SaveDeadCount();
+        playerController.SaveLongestDistance();
         
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();

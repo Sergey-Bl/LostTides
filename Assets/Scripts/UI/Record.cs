@@ -3,14 +3,8 @@ using UnityEngine;
 
 public class Record : MonoBehaviour
 {
-    private PlayerController playerController;
-    
-    [SerializeField] private TextMeshProUGUI recordText;
 
-    public void Start()
-    {
-        DisplayRecords();
-    }
+    [SerializeField] private TextMeshProUGUI recordText;
 
     public void DisplayRecords()
     {
