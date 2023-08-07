@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace UI.Game
     public class CoinCollect : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _coinField;
+
         private int Coins;
 
         private const string CoinsKey = "Coins";
@@ -20,7 +22,11 @@ namespace UI.Game
         {
             if (collider2D.CompareTag("Coin"))
             {
+                AudioPlay audioPlay = GetComponent<AudioPlay>();
+                audioPlay.collectSound();
+
                 Destroy(collider2D.gameObject);
+
                 Coins++;
                 UpdateCoinDisplay();
                 SaveCoins();
