@@ -16,5 +16,8 @@ public class WinLevel : MonoBehaviour
     {
         Debug.Log("Win");
         WinPopUp.SetActive(true);
+
+        // Устанавливаем значение, что пользователь прошел 1 уровень
+        LevelProgress.SetLevel1Passed(true);
     }
 }
