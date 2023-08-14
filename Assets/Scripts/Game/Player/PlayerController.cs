@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        AppMetrica.Instance.ReportEvent("appStarted");
+        AppMetrica.Instance.ReportEvent("LevelStarted");
+        
         LoadLongestDistance();
         UpdateDistanceDisplay();
 

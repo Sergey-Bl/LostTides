@@ -7,9 +7,9 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject restartPopUp;
     [SerializeField] private TextMeshProUGUI _deadCountField;
     [SerializeField] private PlayerController playerController;
-    
+
     private int deadCount;
-    internal const string DeadCountKey  = "DeadCount";
+    internal const string DeadCountKey = "DeadCount";
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class GameOver : MonoBehaviour
 
     public void HandleGameOver()
     {
-        Debug.Log("Game Over");
         restartPopUp.SetActive(true);
         Time.timeScale = 0f;
 
@@ -27,7 +26,9 @@ public class GameOver : MonoBehaviour
         UpdateDeadCountDisplay();
         SaveDeadCount();
         playerController.SaveLongestDistance();
-        
+
+        AppMetrica.Instance.ReportEvent("gameOver");
+
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();
         audioPlay.gameOverSound();
