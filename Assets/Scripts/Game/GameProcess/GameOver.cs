@@ -1,5 +1,6 @@
 using DefaultNamespace;
 using TMPro;
+using UI.Player;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
@@ -7,6 +8,8 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject restartPopUp;
     [SerializeField] private TextMeshProUGUI _deadCountField;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private UpdateDisplayDistance updateDisplayDistance;
+    [SerializeField] private DistanceLoader distanceLoader;
 
     private int deadCount;
     internal const string DeadCountKey = "DeadCount";
@@ -17,7 +20,7 @@ public class GameOver : MonoBehaviour
         UpdateDeadCountDisplay();
     }
 
-    public void HandleGameOver()
+    public void GameOverInit()
     {
         restartPopUp.SetActive(true);
         Time.timeScale = 0f;
@@ -25,7 +28,7 @@ public class GameOver : MonoBehaviour
         deadCount++;
         UpdateDeadCountDisplay();
         SaveDeadCount();
-        playerController.SaveLongestDistance();
+        distanceLoader.SaveLongestDistance();
 
         AppMetrica.Instance.ReportEvent("gameOver");
 
@@ -37,6 +40,19 @@ public class GameOver : MonoBehaviour
     internal void UpdateDeadCountDisplay()
     {
         _deadCountField.text = ($"x" + deadCount);
+    }
+
+    public void HandleGameOver()
+    {
+        if (playerController.distanceTraveled > distanceLoader.longestDistance)
+        {
+            distanceLoader.longestDistance = playerController.distanceTraveled;
+            distanceLoader.SaveLongestDistance();
+        }
+
+        updateDisplayDistance.UpdateDistanceDisplay();
+
+        GameOverInit();
     }
 
     private void SaveDeadCount()

@@ -1,8 +1,11 @@
 using UnityEngine;
-using TMPro;
+using UI.Player;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private UpdateDisplayDistance updateDisplayDistance;
+    [SerializeField] private DistanceLoader distanceLoader;
+
     [SerializeField] private float forwardSpeed = 5f;
     [SerializeField] private float tapForce = 10f;
 
@@ -10,13 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Record record;
 
     private Rigidbody2D rb;
-    private float distanceTraveled;
-    public static float longestDistance { get; private set; } = 0f;
-
-    [SerializeField] private TextMeshProUGUI distanceText;
-    [SerializeField] private TextMeshProUGUI longestDistanceText;
-
-    internal const string LongestDistanceKey = "LongestDistance";
+    public float distanceTraveled;
 
     private void Awake()
     {
@@ -26,9 +23,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         AppMetrica.Instance.ReportEvent("LevelStarted");
-        
-        LoadLongestDistance();
-        UpdateDistanceDisplay();
+
+        distanceLoader.LoadLongestDistance();
+        updateDisplayDistance.UpdateDistanceDisplay();
 
         record.DisplayRecords();
     }
@@ -43,51 +40,15 @@ public class PlayerController : MonoBehaviour
         }
 
         distanceTraveled += forwardSpeed * Time.deltaTime;
-        UpdateDistanceDisplay();
+        updateDisplayDistance.UpdateDistanceDisplay();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Obstacle"))
         {
-            HandleGameOver();
+            gameOver.HandleGameOver();
         }
     }
-
-    private void UpdateDistanceDisplay()
-    {
-        distanceText.text = $"{distanceTraveled:#.#}";
-        longestDistanceText.text = $"Best {longestDistance:#.#}";
-    }
-
-    private void HandleGameOver()
-    {
-        if (distanceTraveled > longestDistance)
-        {
-            longestDistance = distanceTraveled;
-            SaveLongestDistance();
-        }
-
-        UpdateDistanceDisplay();
-
-        gameOver.HandleGameOver();
-    }
-
-    public void SaveLongestDistance()
-    {
-        PlayerPrefs.SetFloat(LongestDistanceKey, longestDistance);
-        PlayerPrefs.Save();
-    }
-
-    public void LoadLongestDistance()
-    {
-        if (PlayerPrefs.HasKey(LongestDistanceKey))
-        {
-            longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey);
-        }
-        else
-        {
-            longestDistance = 0f;
-        }
-    }
+    
 }

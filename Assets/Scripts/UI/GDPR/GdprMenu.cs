@@ -10,8 +10,8 @@ public class GdprMenu : MonoBehaviour
         if (accepted)
             return;
         SimpleGDPR.ShowDialog(
-            new TermsOfServiceDialog().SetTermsOfServiceLink("https://www.freeprivacypolicy.com/live/627e5bcc-8f1e-4340-bd30-a17be03b1955")
-                .SetPrivacyPolicyLink("https://www.freeprivacypolicy.com/live/0ae4936f-b632-4a2b-88f7-a20a9d02b4e5"),
+            new TermsOfServiceDialog().SetTermsOfServiceLink("https://sergey-bl.github.io/Terms-and-Conditions/")
+                .SetPrivacyPolicyLink("https://sergey-bl.github.io/privacy-policy/"),
             OnMenuClosed);
     }
 

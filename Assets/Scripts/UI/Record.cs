@@ -1,16 +1,27 @@
+using System;
 using TMPro;
+using UI.Player;
 using UnityEngine;
 
 public class Record : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI recordText;
+    [SerializeField] private DistanceLoader distanceLoader;
 
     public void DisplayRecords()
     {
-        float recordDistance = PlayerController.longestDistance;
-        string recordsString = $"Longest Distance: {recordDistance:F2}";
+        distanceLoader.LoadLongestDistance();
+        float recordDistance = distanceLoader.longestDistance;
+        string recordsString = $"YOUR RECORD: {recordDistance:F2}";
 
         recordText.text = recordsString;
+    }
+
+    public void Start()
+    {
+      
+        
+        DisplayRecords();
     }
 }
