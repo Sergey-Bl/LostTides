@@ -4,8 +4,6 @@ namespace UI.Player
 {
     public class DistanceLoader : MonoBehaviour
     {
-        // [SerializeField] private PlayerController playerController;
-        
         public float longestDistance { get; set; } = 0f;
         internal const string LongestDistanceKey = "LongestDistance";
         

@@ -1,11 +1,9 @@
-using System;
 using TMPro;
 using UI.Player;
 using UnityEngine;
 
 public class Record : MonoBehaviour
 {
-
     [SerializeField] private TextMeshProUGUI recordText;
     [SerializeField] private DistanceLoader distanceLoader;
 
@@ -20,8 +18,6 @@ public class Record : MonoBehaviour
 
     public void Start()
     {
-      
-        
         DisplayRecords();
     }
 }
