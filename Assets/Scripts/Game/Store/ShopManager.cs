@@ -20,7 +20,6 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         LoadPlayerData();
-        UpdateButtonInteractivity();
     }
 
     private void LoadPlayerData()
@@ -32,17 +31,14 @@ public class ShopManager : MonoBehaviour
     {
         saveCoinsPref.SaveCoins();
     }
-
-    private void UpdateButtonInteractivity()
-    {
-        // ... (остальной код)
-    }
+    
 
     public void BuyFish(int fishIndex)
     {
         int fishPrice = CalculateFishPrice(fishIndex);
         if (coinCollect.Coins >= fishPrice)
         {
+            AppMetrica.Instance.ReportEvent("BuyFISH");
             coinCollect.Coins -= fishPrice;
             SavePlayerData();
 

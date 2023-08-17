@@ -283,14 +283,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74872265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 976043318}
-  m_Father: {fileID: 1088528427}
-  m_RootOrder: 4
+  m_Father: {fileID: 360287467}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1016,6 +1016,7 @@ RectTransform:
   - {fileID: 1723187118}
   - {fileID: 113787885}
   - {fileID: 1614340836}
+  - {fileID: 74872266}
   m_Father: {fileID: 1088528427}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2864,14 +2865,11 @@ MonoBehaviour:
   - {fileID: 1982185358}
   - {fileID: 216029935}
   - {fileID: 720064716}
-  fishPrefabs:
-  - {fileID: 5416574726911625035, guid: 92e445745389c4b61ada506091cffbef, type: 3}
-  - {fileID: 7770584863604633872, guid: 67de17aaa6711224f80123d9b1ef8cb7, type: 3}
-  - {fileID: 2206852426022253465, guid: de500f6b90f89bc4c87a6585b2dea01a, type: 3}
-  - {fileID: 1937588542411740048, guid: a05072560c3476b4cb8dddf22f697392, type: 3}
   fishPrices: 0100000064000000e8030000d0070000
   coinCollect: {fileID: 2094177328}
   saveCoinsPref: {fileID: 2094177329}
+  playerController: {fileID: 0}
+  fishMeshes: []
 --- !u!1 &1069716285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,7 +3011,6 @@ RectTransform:
   - {fileID: 360287467}
   - {fileID: 648940373}
   - {fileID: 1056639878}
-  - {fileID: 74872266}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.309}
@@ -4933,7 +4930,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 625.8982, y: 215.0217}
+  m_SizeDelta: {x: 654.2007, y: 294.2691}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570767011
 MonoBehaviour:

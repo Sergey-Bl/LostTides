@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ContentGeneration : MonoBehaviour
 {
+    
+    // НУЖНО ВСЕ ДОРАБАТЫВАТЬ / СЕЙЧАС  НЕ РАБОТАЕТ
     public float maxDepth = -10f; // Максимальная глубина
     public float obstacleSpawnInterval = 2f; // Интервал появления препятствий
     public float treasureSpawnInterval = 4f; // Интервал появления сокровищ
@@ -32,10 +34,8 @@ public class ContentGeneration : MonoBehaviour
         obstacleTimer += Time.deltaTime;
         if (obstacleTimer >= obstacleSpawnInterval)
         {
-            // Вычисляем случайное смещение по оси X в пределах игрового поля
             float randomX = Random.Range(-3f, 3f);
             
-            // Создаем препятствие на передней границе игрового поля с учетом случайного смещения
             Vector3 spawnPosition = new Vector3(randomX, transform.position.y, 0f);
             Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
             obstacleTimer = 0f;
