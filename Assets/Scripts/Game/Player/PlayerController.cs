@@ -12,12 +12,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameOver gameOver;
     [SerializeField] private Record record;
 
+    [SerializeField] private ShopManager shopManager;
+
     private Rigidbody2D rb;
     public float distanceTraveled;
+
+    private MeshFilter fishMeshFilter; // Используем MeshFilter для изменения меша
+    private SkinnedMeshRenderer fishSkinnedMeshRenderer; // Используем SkinnedMeshRenderer для анимированных мешей
+
+    private int defaultFishMeshIndex = 0; // Индекс дефолтного меша
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        fishMeshFilter = GetComponent<MeshFilter>(); // Получаем MeshFilter
+        fishSkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>(); // Получаем SkinnedMeshRenderer
     }
 
     private void Start()
@@ -28,6 +37,7 @@ public class PlayerController : MonoBehaviour
         updateDisplayDistance.UpdateDistanceDisplay();
 
         record.DisplayRecords();
+
     }
 
     private void Update()
@@ -48,6 +58,23 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Obstacle"))
         {
             gameOver.HandleGameOver();
+        }
+    }
+
+    public void ApplyNewFishMesh(Mesh newMesh)
+    {
+        if (fishMeshFilter != null)
+        {
+            fishMeshFilter.mesh = newMesh; // Применяем новый меш для объектов с MeshFilter
+
+            // Увеличиваем масштаб меша для увеличения размера игрока
+            transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f); // Примерный масштаб
+            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                boxCollider.size = new Vector2(1.01f, 0.43f);
+                boxCollider.offset = new Vector2(-0.04f, 0f);
+            }
         }
     }
     

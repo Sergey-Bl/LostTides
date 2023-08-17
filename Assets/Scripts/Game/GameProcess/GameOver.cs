@@ -23,7 +23,6 @@ public class GameOver : MonoBehaviour
     public void GameOverInit()
     {
         restartPopUp.SetActive(true);
-        Time.timeScale = 0f;
 
         deadCount++;
         UpdateDeadCountDisplay();
@@ -35,6 +34,7 @@ public class GameOver : MonoBehaviour
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();
         audioPlay.gameOverSound();
+        Time.timeScale = 0f;
     }
 
     internal void UpdateDeadCountDisplay()

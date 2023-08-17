@@ -8,7 +8,7 @@ public class CoinCollect : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _coinField;
     [SerializeField] private SaveCoinsPref saveCoinsPref;
 
-    public int Coins { get; set; } = 0;
+    public int Coins;
 
 
     private void Start()
