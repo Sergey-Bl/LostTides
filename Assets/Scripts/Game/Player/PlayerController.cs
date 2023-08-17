@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameOver gameOver;
     [SerializeField] private Record record;
     [SerializeField] private ShopManager shopManager;
+    [SerializeField] private ChangeFish changeFish;
 
     private Rigidbody2D rb;
     public float distanceTraveled;
 
-    private MeshFilter fishMeshFilter;
     private SkinnedMeshRenderer fishSkinnedMeshRenderer;
 
     private int defaultFishMeshIndex = 0;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        fishMeshFilter = GetComponent<MeshFilter>();
+        changeFish.fishMeshFilter = GetComponent<MeshFilter>();
     }
 
     private void Start()
@@ -58,19 +58,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ApplyNewFishMesh(Mesh newMesh)
-    {
-        if (fishMeshFilter != null)
-        {
-            fishMeshFilter.mesh = newMesh;
-
-            transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f); // Примерный масштаб
-            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-            if (boxCollider != null)
-            {
-                boxCollider.size = new Vector2(1.01f, 0.43f);
-                boxCollider.offset = new Vector2(-0.04f, 0f);
-            }
-        }
-    }
+ 
 }

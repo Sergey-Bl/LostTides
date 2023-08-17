@@ -5,7 +5,8 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI coinText;
+    [SerializeField]
+    public TextMeshProUGUI coinText;
     [SerializeField] private Button[] buyButtons;
     [SerializeField] private int[] fishPrices;
 
@@ -27,40 +28,17 @@ public class ShopManager : MonoBehaviour
         saveCoinsPref.LoadCoins();
     }
 
-    private void SavePlayerData()
+    public void SavePlayerData()
     {
         saveCoinsPref.SaveCoins();
     }
-    
 
-    public void BuyFish(int fishIndex)
-    {
-        int fishPrice = CalculateFishPrice(fishIndex);
-        if (coinCollect.Coins >= fishPrice)
-        {
-            AppMetrica.Instance.ReportEvent("BuyFISH");
-            coinCollect.Coins -= fishPrice;
-            SavePlayerData();
-
-            coinText.text = $"x{coinCollect.Coins}";
-
-            UpdateFishMesh(fishIndex);
-
-            Mesh newFishMesh = GetCurrentFishMesh();
-            if (newFishMesh != null)
-            {
-                playerController.ApplyNewFishMesh(newFishMesh);
-            }
-        }
-    }
-    
-
-    private int CalculateFishPrice(int fishIndex)
+    public int CalculateFishPrice(int fishIndex)
     {
         return fishPrices[fishIndex];
     }
 
-    private void UpdateFishMesh(int fishIndex)
+    public void UpdateFishMesh(int fishIndex)
     {
         if (fishIndex < fishMeshes.Length)
         {
@@ -77,7 +55,7 @@ public class ShopManager : MonoBehaviour
         return null;
     }
 
-    public void FreezWhenOpenWindow()
+    public void FreezeWhenOpenWindow()
     {
         Time.timeScale = 0f;
     }
