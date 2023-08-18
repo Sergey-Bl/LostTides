@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UI.Player;
 using UnityEngine;
 
@@ -53,6 +54,9 @@ public class PlayerController : MonoBehaviour
                 waitingForInput = false;
                 rb.gravityScale = 1f; 
                 rb.velocity = Vector2.zero; 
+                
+                AudioPlay audioPlay = GetComponent<AudioPlay>();
+                audioPlay.backGroundSound();
             }
         }
         else
