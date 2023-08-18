@@ -1,5 +1,5 @@
-using UnityEngine;
 using UI.Player;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float forwardSpeed = 5f;
     [SerializeField] private float tapForce = 10f;
+    
+    [SerializeField] private GameObject _tutorText;
 
     [SerializeField] private GameOver gameOver;
     [SerializeField] private Record record;
     [SerializeField] private ChangeFish changeFish;
+
+    private bool waitingForInput = true;
 
     private Rigidbody2D rb;
     public float distanceTraveled;
@@ -34,19 +38,35 @@ public class PlayerController : MonoBehaviour
         updateDisplayDistance.UpdateDistanceDisplay();
 
         record.DisplayRecords();
+        
+        rb.velocity = Vector2.zero; 
+        rb.gravityScale = 0f; 
     }
 
     private void Update()
     {
-        rb.velocity = new Vector2(forwardSpeed, rb.velocity.y);
-
-        if (Input.GetMouseButtonDown(0))
+        if (waitingForInput)
         {
-            rb.velocity = new Vector2(rb.velocity.x, tapForce);
+            if (Input.GetMouseButtonDown(0))
+            {
+                _tutorText.SetActive(false);
+                waitingForInput = false;
+                rb.gravityScale = 1f; 
+                rb.velocity = Vector2.zero; 
+            }
         }
+        else
+        {
+            rb.velocity = new Vector2(forwardSpeed, rb.velocity.y);
 
-        distanceTraveled += forwardSpeed * Time.deltaTime;
-        updateDisplayDistance.UpdateDistanceDisplay();
+            if (Input.GetMouseButtonDown(0))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, tapForce);
+            }
+
+            distanceTraveled += forwardSpeed * Time.deltaTime;
+            updateDisplayDistance.UpdateDistanceDisplay();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
