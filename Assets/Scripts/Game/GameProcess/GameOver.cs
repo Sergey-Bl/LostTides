@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private GameObject restartPopUp;
     [SerializeField] private TextMeshProUGUI _deadCountField;
+
+    [SerializeField] private GameObject restartPopUp;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private UpdateDisplayDistance updateDisplayDistance;
     [SerializeField] private DistanceLoader distanceLoader;
@@ -34,6 +35,7 @@ public class GameOver : MonoBehaviour
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();
         audioPlay.gameOverSound();
+
         Time.timeScale = 0f;
     }
 

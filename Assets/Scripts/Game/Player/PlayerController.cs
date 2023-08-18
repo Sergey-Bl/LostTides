@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameOver gameOver;
     [SerializeField] private Record record;
-    [SerializeField] private ShopManager shopManager;
     [SerializeField] private ChangeFish changeFish;
 
     private Rigidbody2D rb;
@@ -57,6 +56,4 @@ public class PlayerController : MonoBehaviour
             gameOver.HandleGameOver();
         }
     }
-
- 
 }

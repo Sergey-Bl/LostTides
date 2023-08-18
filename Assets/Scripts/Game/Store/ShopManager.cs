@@ -1,18 +1,14 @@
 using UnityEngine;
 using UI.Game;
-using UnityEngine.UI;
 using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
     [SerializeField]
     public TextMeshProUGUI coinText;
-    [SerializeField] private Button[] buyButtons;
     [SerializeField] private int[] fishPrices;
 
-    [SerializeField] private CoinCollect coinCollect;
     [SerializeField] private SaveCoinsPref saveCoinsPref;
-    [SerializeField] private PlayerController playerController;
 
     [SerializeField] private Mesh[] fishMeshes;
 

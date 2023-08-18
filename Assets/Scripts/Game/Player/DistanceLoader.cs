@@ -4,9 +4,9 @@ namespace UI.Player
 {
     public class DistanceLoader : MonoBehaviour
     {
-        public float longestDistance { get; set; } = 0f;
+        public float longestDistance = 0f;
         internal const string LongestDistanceKey = "LongestDistance";
-        
+
         public void SaveLongestDistance()
         {
             PlayerPrefs.SetFloat(LongestDistanceKey, longestDistance);
