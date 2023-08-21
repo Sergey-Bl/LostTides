@@ -5,7 +5,7 @@ namespace UI
 {
     public class SceneController : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private string sceneName;
 
         public void SceneLoad()

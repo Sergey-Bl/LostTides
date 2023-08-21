@@ -4,9 +4,9 @@ namespace UI.Game
 {
     public class SaveCoinsPref : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private CoinCollect _coinCollect;
-        
+
         private const string CoinsKey = "Coins";
 
         public void SaveCoins()

@@ -8,18 +8,14 @@ namespace UI.Player
 
         public void ApplyNewFishMesh(Mesh newMesh)
         {
-            if (fishMeshFilter != null)
-            {
-                fishMeshFilter.mesh = newMesh;
+            if (fishMeshFilter == null) return;
+            fishMeshFilter.mesh = newMesh;
 
-                transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);
-                BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-                if (boxCollider != null)
-                {
-                    boxCollider.size = new Vector2(1.01f, 0.43f);
-                    boxCollider.offset = new Vector2(-0.04f, 0f);
-                }
-            }
+            transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);
+            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+            if (boxCollider == null) return;
+            boxCollider.size = new Vector2(1.01f, 0.43f);
+            boxCollider.offset = new Vector2(-0.04f, 0f);
         }
     }
 }

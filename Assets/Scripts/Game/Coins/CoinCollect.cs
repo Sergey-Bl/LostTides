@@ -6,7 +6,6 @@ public class CoinCollect : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _coinField;
-
     [SerializeField]
     private SaveCoinsPref _saveCoinsPref;
 

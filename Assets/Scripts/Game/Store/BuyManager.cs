@@ -1,41 +1,33 @@
 using UI.Player;
 using UnityEngine;
 
-namespace UI.Store
+public class BuyManager : MonoBehaviour
 {
-    public class BuyManager : MonoBehaviour
+    [SerializeField]
+    private ShopManager shopManager;
+    [SerializeField]
+    private CoinCollect coinCollect;
+    [SerializeField]
+    private ChangeFish changeFish;
+    [SerializeField]
+    private AbstractMetrics metrics;
+
+    public void BuyFish(int fishIndex)
     {
-        [SerializeField] 
-        private ShopManager shopManager;
-        
-        [SerializeField] 
-        private CoinCollect coinCollect;
-        
-        [SerializeField] 
-        private ChangeFish changeFish;
-        
-        [SerializeField]
-        private AbstractMetrics metrics;
+        int fishPrice = shopManager.CalculateFishPrice(fishIndex);
+        if (coinCollect.Coins < fishPrice) return;
+        metrics.Send("BuyFISH");
+        coinCollect.Coins -= fishPrice;
+        shopManager.SavePlayerData();
 
-        public void BuyFish(int fishIndex)
+        shopManager._coinText.text = $"x{coinCollect.Coins}";
+
+        shopManager.UpdateFishMesh(fishIndex);
+
+        Mesh newFishMesh = shopManager.GetCurrentFishMesh();
+        if (newFishMesh != null)
         {
-            int fishPrice = shopManager.CalculateFishPrice(fishIndex);
-            if (coinCollect.Coins >= fishPrice)
-            {
-                metrics.Send("BuyFISH");
-                coinCollect.Coins -= fishPrice;
-                shopManager.SavePlayerData();
-
-                shopManager._coinText.text = $"x{coinCollect.Coins}";
-
-                shopManager.UpdateFishMesh(fishIndex);
-
-                Mesh newFishMesh = shopManager.GetCurrentFishMesh();
-                if (newFishMesh != null)
-                {
-                    changeFish.ApplyNewFishMesh(newFishMesh);
-                }
-            }
+            changeFish.ApplyNewFishMesh(newFishMesh);
         }
     }
 }

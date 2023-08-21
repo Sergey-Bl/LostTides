@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Record : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _recordText;
-    [SerializeField] private DistanceLoader _distanceLoader;
+    [SerializeField]
+    private TextMeshProUGUI _recordText;
+    [SerializeField]
+    private DistanceLoader _distanceLoader;
 
     public void DisplayRecords()
     {

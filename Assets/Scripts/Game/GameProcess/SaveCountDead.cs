@@ -4,7 +4,7 @@ namespace UI.Game
 {
     public class SaveCountDead : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private GameOver _gameOver;
 
         internal void SaveDeadCount()

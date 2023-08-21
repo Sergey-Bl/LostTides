@@ -6,14 +6,14 @@ public class ShopManager : MonoBehaviour
 {
     [SerializeField]
     public TextMeshProUGUI _coinText;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private int[] fishPrices;
 
-    [SerializeField] 
+    [SerializeField]
     private SaveCoinsPref saveCoinsPref;
 
-    [SerializeField] 
+    [SerializeField]
     private Mesh[] fishMeshes;
 
     private int currentFishMeshIndex;

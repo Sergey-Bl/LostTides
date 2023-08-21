@@ -10,11 +10,9 @@ public class WinLevel : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Win"))
-        {
-            metrics.Send("WinLevel1");
-            HandleWin();
-        }
+        if (!collision.collider.CompareTag("Win")) return;
+        metrics.Send("WinLevel1");
+        HandleWin();
     }
 
     private void HandleWin()

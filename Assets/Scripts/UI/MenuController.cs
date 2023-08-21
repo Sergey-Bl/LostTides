@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private GameObject Level2Button;
 
     private void Start()

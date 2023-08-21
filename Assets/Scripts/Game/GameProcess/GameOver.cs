@@ -1,33 +1,27 @@
+using Metrics;
 using TMPro;
 using UI.Game;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI _deadCountField;
-
-    [SerializeField] 
+    [SerializeField]
     private GameObject restartPopUp;
-
     [SerializeField]
     private PlayerController _playerController;
-    
     [SerializeField]
-    private AbstractMetrics metrics;
-
+    private AnalyticsKeys _analyticsKeys;
     [SerializeField]
     private SaveCountDead _saveCountDead;
-
     [SerializeField]
     private UpdateDisplayDistance _updateDisplayDistance;
-
     [SerializeField]
     private DistanceLoader _distanceLoader;
 
     internal const string DeadCountKey = "DeadCount";
     public int deadCount;
-
 
     private void Start()
     {
@@ -44,7 +38,7 @@ public class GameOver : MonoBehaviour
         _saveCountDead.SaveDeadCount();
         _distanceLoader.SaveLongestDistance();
 
-        metrics.Send("gameOver");
+        _analyticsKeys.GameOverAnalytic();
 
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();

@@ -4,6 +4,9 @@ public class GdprMenu : MonoBehaviour
 {
     private string policyKey = "policy";
 
+    [SerializeField]
+    private AbstractMetrics _metrics;
+
     private void Start()
     {
         var accepted = PlayerPrefs.GetInt(policyKey, 0) == 1;
@@ -18,7 +21,7 @@ public class GdprMenu : MonoBehaviour
     private void OnMenuClosed()
     {
         Debug.LogWarning("Policy Accepted");
-        AppMetrica.Instance.ReportEvent("gdprAccepted");
+        _metrics.Send("gdprAccepted");
         PlayerPrefs.SetInt(policyKey, 1);
     }
 }
