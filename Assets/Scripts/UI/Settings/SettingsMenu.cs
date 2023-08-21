@@ -5,12 +5,13 @@ namespace UI.Settings
 {
     public class SettingsMenu : MonoBehaviour
     {
-       [SerializeField] private AudioMixer audioMixer;
+       [SerializeField] 
+       private AudioMixer _audioMixer;
         
 
         public void SetVolume(float volume)
         {
-            audioMixer.SetFloat("volume", volume);
+            _audioMixer.SetFloat("volume", volume);
         }
     }
 }

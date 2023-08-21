@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class WinLevel : MonoBehaviour
 {
-    [SerializeField] private GameObject WinPopUp;
+    [SerializeField] 
+    private GameObject winPopUp;
+    
+    [SerializeField]
+    private AbstractMetrics metrics;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Win"))
         {
+            metrics.Send("WinLevel1");
             HandleWin();
         }
     }
 
     private void HandleWin()
     {
-        Debug.Log("Win");
-        WinPopUp.SetActive(true);
+        winPopUp.SetActive(true);
 
         LevelProgress.SetLevel1Passed(true);
     }

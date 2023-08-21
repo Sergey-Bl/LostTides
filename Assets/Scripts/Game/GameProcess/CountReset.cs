@@ -1,4 +1,3 @@
-using UI.Player;
 using UnityEngine;
 
 namespace UI.Game
@@ -6,15 +5,19 @@ namespace UI.Game
     public class CountReset : MonoBehaviour
     {
         private GameOver gameOver;
-        private DistanceLoader distanceLoader;
+
+        [SerializeField]
+        private AbstractMetrics metrics;
 
         public void ResetDeadCount()
         {
+            metrics.Send("DeadCountResetTap");
             PlayerPrefs.DeleteKey(GameOver.DeadCountKey);
         }
 
         public void RestDistance()
         {
+            metrics.Send("DistanceCountResetTap");
             PlayerPrefs.DeleteKey(DistanceLoader.LongestDistanceKey);
         }
     }

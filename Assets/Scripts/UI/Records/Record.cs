@@ -5,13 +5,13 @@ using UnityEngine;
 public class Record : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _recordText;
-    [SerializeField] private DistanceLoader distanceLoader;
+    [SerializeField] private DistanceLoader _distanceLoader;
 
     public void DisplayRecords()
     {
-        distanceLoader.LoadLongestDistance();
-        float recordDistance = distanceLoader.longestDistance;
-        string recordsString = $"YOUR RECORD: {recordDistance:F2}";
+        _distanceLoader.LoadLongestDistance();
+        float recordDistance = _distanceLoader.longestDistance;
+        string recordsString = $"YOUR RECORD: {recordDistance:#}m";
 
         _recordText.text = recordsString;
     }

@@ -1,37 +1,33 @@
 using UnityEngine;
 
-namespace DefaultNamespace
+public class AudioPlay : MonoBehaviour
 {
-    public class AudioPlay : MonoBehaviour
+    [SerializeField]
+    private AudioSource _gameOver;
+    [SerializeField]
+    private AudioSource _backSound;
+    [SerializeField]
+    private AudioSource _collectCoin;
+    [SerializeField]
+    private AudioSource _tap;
+
+    internal void musicStop()
     {
-        [SerializeField] private AudioSource gameOver;
-        [SerializeField] private AudioSource backSound;
-        [SerializeField] private AudioSource collectCoin;
-        [SerializeField] private AudioSource tap;
+        _backSound.Stop();
+    }
 
-        internal void musicStop()
-        {
-            backSound.Stop();
-        }
+    internal void gameOverSound()
+    {
+        _gameOver.Play();
+    }
 
-        internal void gameOverSound()
-        {
-            gameOver.Play();
-        }
+    internal void backGroundSound()
+    {
+        _backSound.Play();
+    }
 
-        internal void backGroundSound()
-        {
-            backSound.Play();
-        }
-
-        internal void collectSound()
-        {
-            collectCoin.Play();
-        }
-
-        internal void tapSound()
-        {
-            tap.Play();
-        }
+    internal void collectSound()
+    {
+        _collectCoin.Play();
     }
 }

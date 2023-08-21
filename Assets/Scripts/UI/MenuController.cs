@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject Level2Button;
+    [SerializeField] 
+    private GameObject Level2Button;
 
-    void Start()
+    private void Start()
     {
         if (LevelProgress.IsLevel1Passed())
         {

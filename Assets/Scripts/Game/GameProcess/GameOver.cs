@@ -1,23 +1,37 @@
-using DefaultNamespace;
 using TMPro;
-using UI.Player;
+using UI.Game;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _deadCountField;
+    [SerializeField] 
+    private TextMeshProUGUI _deadCountField;
 
-    [SerializeField] private GameObject restartPopUp;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private UpdateDisplayDistance updateDisplayDistance;
-    [SerializeField] private DistanceLoader distanceLoader;
+    [SerializeField] 
+    private GameObject restartPopUp;
 
-    private int deadCount;
+    [SerializeField]
+    private PlayerController _playerController;
+    
+    [SerializeField]
+    private AbstractMetrics metrics;
+
+    [SerializeField]
+    private SaveCountDead _saveCountDead;
+
+    [SerializeField]
+    private UpdateDisplayDistance _updateDisplayDistance;
+
+    [SerializeField]
+    private DistanceLoader _distanceLoader;
+
     internal const string DeadCountKey = "DeadCount";
+    public int deadCount;
+
 
     private void Start()
     {
-        LoadDeadCount();
+        _saveCountDead.LoadDeadCount();
         UpdateDeadCountDisplay();
     }
 
@@ -27,10 +41,10 @@ public class GameOver : MonoBehaviour
 
         deadCount++;
         UpdateDeadCountDisplay();
-        SaveDeadCount();
-        distanceLoader.SaveLongestDistance();
+        _saveCountDead.SaveDeadCount();
+        _distanceLoader.SaveLongestDistance();
 
-        AppMetrica.Instance.ReportEvent("gameOver");
+        metrics.Send("gameOver");
 
         AudioPlay audioPlay = GetComponent<AudioPlay>();
         audioPlay.musicStop();
@@ -46,32 +60,15 @@ public class GameOver : MonoBehaviour
 
     public void HandleGameOver()
     {
-        if (playerController.distanceTraveled > distanceLoader.longestDistance)
+        if (_playerController.distanceTraveled > _distanceLoader.longestDistance)
         {
-            distanceLoader.longestDistance = playerController.distanceTraveled;
-            distanceLoader.SaveLongestDistance();
+            _distanceLoader.longestDistance = _playerController.distanceTraveled;
+            _distanceLoader.SaveLongestDistance();
         }
 
-        updateDisplayDistance.UpdateDistanceDisplay();
+        _updateDisplayDistance.UpdateDistanceDisplay();
+        _updateDisplayDistance.UpdateDistanceWhenLose();
 
         GameOverInit();
-    }
-
-    private void SaveDeadCount()
-    {
-        PlayerPrefs.SetInt(DeadCountKey, deadCount);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadDeadCount()
-    {
-        if (PlayerPrefs.HasKey(DeadCountKey))
-        {
-            deadCount = PlayerPrefs.GetInt(DeadCountKey);
-        }
-        else
-        {
-            deadCount = 0;
-        }
     }
 }

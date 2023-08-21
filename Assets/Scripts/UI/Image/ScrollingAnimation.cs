@@ -5,8 +5,11 @@ namespace UI.Image
 {
     public class ScrollingAnimation : MonoBehaviour
     {
-        [SerializeField] private RawImage _img;
-        [SerializeField] private float _x, _y;
+        [SerializeField] 
+        private RawImage _img;
+        
+        [SerializeField] 
+        private float _x, _y;
 
         private void Update()
         {

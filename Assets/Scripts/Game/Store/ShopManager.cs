@@ -5,12 +5,16 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField]
-    public TextMeshProUGUI coinText;
-    [SerializeField] private int[] fishPrices;
+    public TextMeshProUGUI _coinText;
+    
+    [SerializeField] 
+    private int[] fishPrices;
 
-    [SerializeField] private SaveCoinsPref saveCoinsPref;
+    [SerializeField] 
+    private SaveCoinsPref saveCoinsPref;
 
-    [SerializeField] private Mesh[] fishMeshes;
+    [SerializeField] 
+    private Mesh[] fishMeshes;
 
     private int currentFishMeshIndex;
 

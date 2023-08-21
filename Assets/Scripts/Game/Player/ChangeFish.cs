@@ -5,6 +5,7 @@ namespace UI.Player
     public class ChangeFish : MonoBehaviour
     {
         public MeshFilter fishMeshFilter;
+
         public void ApplyNewFishMesh(Mesh newMesh)
         {
             if (fishMeshFilter != null)

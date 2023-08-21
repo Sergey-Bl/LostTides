@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "132201891431",
+    "project_id": "losttides-40ece",
+    "storage_bucket": "losttides-40ece.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132201891431:android:863f689aeab5cd087176c2",
+        "android_client_info": {
+          "package_name": "com.SelfAntimn.LostTides"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132201891431-s5rm7v0u0e6fks64c3h3h4pomg6c5g3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ88f5_Pp3QZCpqQog4y6L1YhXCTubMAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132201891431-s5rm7v0u0e6fks64c3h3h4pomg6c5g3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

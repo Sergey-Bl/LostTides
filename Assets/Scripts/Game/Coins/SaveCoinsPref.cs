@@ -4,12 +4,14 @@ namespace UI.Game
 {
     public class SaveCoinsPref : MonoBehaviour
     {
-        [SerializeField] private CoinCollect coinCollect;
+        [SerializeField] 
+        private CoinCollect _coinCollect;
+        
         private const string CoinsKey = "Coins";
 
         public void SaveCoins()
         {
-            PlayerPrefs.SetInt(CoinsKey, coinCollect.Coins);
+            PlayerPrefs.SetInt(CoinsKey, _coinCollect.Coins);
             PlayerPrefs.Save();
         }
 
@@ -17,11 +19,11 @@ namespace UI.Game
         {
             if (PlayerPrefs.HasKey(CoinsKey))
             {
-                coinCollect.Coins = PlayerPrefs.GetInt(CoinsKey);
+                _coinCollect.Coins = PlayerPrefs.GetInt(CoinsKey);
             }
             else
             {
-                coinCollect.Coins = 0;
+                _coinCollect.Coins = 0;
             }
         }
     }

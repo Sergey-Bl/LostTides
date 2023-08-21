@@ -1,12 +1,9 @@
 using UnityEngine;
 
-namespace UI.Game
+public class GameReturn : MonoBehaviour
 {
-    public class GameReturn : MonoBehaviour
+    public void GameReturns()
     {
-        public void GameReturns()
-        {
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = 1f;
     }
 }

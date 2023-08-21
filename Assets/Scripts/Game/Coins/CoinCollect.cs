@@ -1,35 +1,34 @@
-using DefaultNamespace;
 using TMPro;
 using UI.Game;
 using UnityEngine;
 
 public class CoinCollect : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _coinField;
-    [SerializeField] private SaveCoinsPref saveCoinsPref;
+    [SerializeField]
+    private TextMeshProUGUI _coinField;
+
+    [SerializeField]
+    private SaveCoinsPref _saveCoinsPref;
 
     public int Coins;
 
-
     private void Start()
     {
-        saveCoinsPref.LoadCoins();
+        _saveCoinsPref.LoadCoins();
         UpdateCoinDisplay();
     }
 
-    void OnTriggerEnter2D(Collider2D collider2D)
+    private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.CompareTag("Coin"))
-        {
-            AudioPlay audioPlay = GetComponent<AudioPlay>();
-            audioPlay.collectSound();
+        if (!collider2D.CompareTag("Coin")) return;
+        AudioPlay audioPlay = GetComponent<AudioPlay>();
+        audioPlay.collectSound();
 
-            Destroy(collider2D.gameObject);
+        Destroy(collider2D.gameObject);
 
-            Coins++;
-            UpdateCoinDisplay();
-            saveCoinsPref.SaveCoins();
-        }
+        Coins++;
+        UpdateCoinDisplay();
+        _saveCoinsPref.SaveCoins();
     }
 
     private void UpdateCoinDisplay()

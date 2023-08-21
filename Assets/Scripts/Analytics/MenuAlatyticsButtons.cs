@@ -2,33 +2,24 @@ using UnityEngine;
 
 public class MenuAlatyticsButtons : MonoBehaviour
 {
+    [SerializeField] private AbstractMetrics metrics;
     public void PlayTap()
     {
-        AppMetrica.Instance.ReportEvent("playButtonTapLevel1");
-        Debug.Log("playButtonTapLevel1");
+        metrics.Send("playButtonTapLevel1");
     }
 
     public void PlayTapLevel2()
     {
-        AppMetrica.Instance.ReportEvent("playButtonTapLevel2");
-        Debug.Log("playButtonTapLevel2");
+        metrics.Send("playButtonTapLevel2");
     }
 
     public void SettingTap()
     {
-        AppMetrica.Instance.ReportEvent("settingButtonTap");
-        Debug.Log("settingButtonTap");
-    }
-
-    public void RecordTap()
-    {
-        AppMetrica.Instance.ReportEvent("recordButtonTap");
-        Debug.Log("recordButtonTap");
+        metrics.Send("settingButtonTap");
     }
 
     public void StoreTap()
     {
-        AppMetrica.Instance.ReportEvent("storeButtonTap");
-        Debug.Log("storeButtonTap");
+        metrics.Send("storeButtonTap");
     }
 }

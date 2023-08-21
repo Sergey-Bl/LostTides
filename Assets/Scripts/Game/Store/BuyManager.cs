@@ -5,20 +5,28 @@ namespace UI.Store
 {
     public class BuyManager : MonoBehaviour
     {
-        [SerializeField] private ShopManager shopManager;
-        [SerializeField] private CoinCollect coinCollect;
-        [SerializeField] private ChangeFish changeFish;
+        [SerializeField] 
+        private ShopManager shopManager;
+        
+        [SerializeField] 
+        private CoinCollect coinCollect;
+        
+        [SerializeField] 
+        private ChangeFish changeFish;
+        
+        [SerializeField]
+        private AbstractMetrics metrics;
 
         public void BuyFish(int fishIndex)
         {
             int fishPrice = shopManager.CalculateFishPrice(fishIndex);
             if (coinCollect.Coins >= fishPrice)
             {
-                AppMetrica.Instance.ReportEvent("BuyFISH");
+                metrics.Send("BuyFISH");
                 coinCollect.Coins -= fishPrice;
                 shopManager.SavePlayerData();
 
-                shopManager.coinText.text = $"x{coinCollect.Coins}";
+                shopManager._coinText.text = $"x{coinCollect.Coins}";
 
                 shopManager.UpdateFishMesh(fishIndex);
 

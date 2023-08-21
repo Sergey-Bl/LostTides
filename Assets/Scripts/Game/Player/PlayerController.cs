@@ -1,63 +1,66 @@
-using DefaultNamespace;
 using UI.Player;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private UpdateDisplayDistance updateDisplayDistance;
-    [SerializeField] private DistanceLoader distanceLoader;
-
-    [SerializeField] private float forwardSpeed = 5f;
-    [SerializeField] private float tapForce = 10f;
-    
-    [SerializeField] private GameObject _tutorText;
-
-    [SerializeField] private GameOver gameOver;
-    [SerializeField] private Record record;
-    [SerializeField] private ChangeFish changeFish;
+    [SerializeField]
+    private float forwardSpeed = 5f;
+    [SerializeField]
+    private float tapForce = 10f;
+    [SerializeField]
+    private GameObject _tutorText;
+    [SerializeField]
+    private UpdateDisplayDistance _updateDisplayDistance;
+    [SerializeField]
+    private DistanceLoader _distanceLoader;
+    [SerializeField]
+    private GameOver _gameOver;
+    [SerializeField]
+    private Record _record;
+    [SerializeField]
+    private ChangeFish _changeFish;
+    [SerializeField]
+    private AbstractMetrics metrics;
 
     private bool waitingForInput = true;
-
     private Rigidbody2D rb;
-    public float distanceTraveled;
-
-    private SkinnedMeshRenderer fishSkinnedMeshRenderer;
-
     private int defaultFishMeshIndex = 0;
+    private AudioPlay _audioPlay;
+
+    public float distanceTraveled { private set; get; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        changeFish.fishMeshFilter = GetComponent<MeshFilter>();
+        _changeFish.fishMeshFilter = GetComponent<MeshFilter>();
     }
 
     private void Start()
     {
-        AppMetrica.Instance.ReportEvent("LevelStarted");
+        _audioPlay = GetComponent<AudioPlay>();
 
-        distanceLoader.LoadLongestDistance();
-        updateDisplayDistance.UpdateDistanceDisplay();
+        metrics.Send("level_started");
 
-        record.DisplayRecords();
-        
-        rb.velocity = Vector2.zero; 
-        rb.gravityScale = 0f; 
+        _distanceLoader.LoadLongestDistance();
+        _updateDisplayDistance.UpdateDistanceDisplay();
+
+        _record.DisplayRecords();
+
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0f;
     }
 
     private void Update()
     {
         if (waitingForInput)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _tutorText.SetActive(false);
-                waitingForInput = false;
-                rb.gravityScale = 1f; 
-                rb.velocity = Vector2.zero; 
-                
-                AudioPlay audioPlay = GetComponent<AudioPlay>();
-                audioPlay.backGroundSound();
-            }
+            if (!Input.GetMouseButtonDown(0)) return;
+            _tutorText.SetActive(false);
+            waitingForInput = false;
+            rb.gravityScale = 1f;
+            rb.velocity = Vector2.zero;
+
+            _audioPlay.backGroundSound();
         }
         else
         {
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
             }
 
             distanceTraveled += forwardSpeed * Time.deltaTime;
-            updateDisplayDistance.UpdateDistanceDisplay();
+            _updateDisplayDistance.UpdateDistanceDisplay();
         }
     }
 
@@ -77,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Obstacle"))
         {
-            gameOver.HandleGameOver();
+            _gameOver.HandleGameOver();
         }
     }
 }

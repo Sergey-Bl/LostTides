@@ -4,7 +4,7 @@ public class GdprMenu : MonoBehaviour
 {
     private string policyKey = "policy";
 
-    void Start()
+    private void Start()
     {
         var accepted = PlayerPrefs.GetInt(policyKey, 0) == 1;
         if (accepted)

@@ -1,28 +1,25 @@
 using UnityEngine;
 
-namespace UI.Player
+public class DistanceLoader : MonoBehaviour
 {
-    public class DistanceLoader : MonoBehaviour
+    public float longestDistance;
+    internal const string LongestDistanceKey = "LongestDistance";
+
+    public void SaveLongestDistance()
     {
-        public float longestDistance = 0f;
-        internal const string LongestDistanceKey = "LongestDistance";
+        PlayerPrefs.SetFloat(LongestDistanceKey, longestDistance);
+        PlayerPrefs.Save();
+    }
 
-        public void SaveLongestDistance()
+    public void LoadLongestDistance()
+    {
+        if (PlayerPrefs.HasKey(LongestDistanceKey))
         {
-            PlayerPrefs.SetFloat(LongestDistanceKey, longestDistance);
-            PlayerPrefs.Save();
+            longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey);
         }
-
-        public void LoadLongestDistance()
+        else
         {
-            if (PlayerPrefs.HasKey(LongestDistanceKey))
-            {
-                longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey);
-            }
-            else
-            {
-                longestDistance = 0f;
-            }
+            longestDistance = 0f;
         }
     }
 }
