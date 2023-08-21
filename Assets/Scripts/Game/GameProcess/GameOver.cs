@@ -25,7 +25,7 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private DistanceLoader _distanceLoader;
 
-    internal const string DeadCountKey = "DeadCount";
+    internal const string DeadCountKey = "DeadCount1";
     public int deadCount;
 
 
