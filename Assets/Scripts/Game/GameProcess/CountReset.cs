@@ -1,24 +1,24 @@
 using UnityEngine;
 
-namespace UI.Game
+// Класс для сброса счетчиков
+public class CountReset : MonoBehaviour
 {
-    public class CountReset : MonoBehaviour
+    private GameOver gameOver; // Ссылка на компонент завершения игры
+
+    [SerializeField]
+    private AbstractMetrics metrics; // Ссылка на компонент метрик
+
+    // Метод для сброса счетчика количества смертей
+    public void ResetDeadCount()
     {
-        private GameOver gameOver;
+        metrics.Send("DeadCountResetTap"); // Отправка метрики о нажатии кнопки сброса счетчика смертей
+        PlayerPrefs.DeleteKey(GameOver.DeadCountKey); // Удаление ключа счетчика смертей из PlayerPrefs
+    }
 
-        [SerializeField]
-        private AbstractMetrics metrics;
-
-        public void ResetDeadCount()
-        {
-            metrics.Send("DeadCountResetTap");
-            PlayerPrefs.DeleteKey(GameOver.DeadCountKey);
-        }
-
-        public void RestDistance()
-        {
-            metrics.Send("DistanceCountResetTap");
-            PlayerPrefs.DeleteKey(DistanceLoader.LongestDistanceKey);
-        }
+    // Метод для сброса счетчика дистанции
+    public void ResetDistance()
+    {
+        metrics.Send("DistanceCountResetTap"); // Отправка метрики о нажатии кнопки сброса счетчика дистанции
+        PlayerPrefs.DeleteKey(DistanceLoader.LongestDistanceKey); // Удаление ключа счетчика дистанции из PlayerPrefs
     }
 }

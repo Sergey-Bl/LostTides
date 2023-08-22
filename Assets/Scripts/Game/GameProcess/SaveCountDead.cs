@@ -1,28 +1,31 @@
 using UnityEngine;
 
-namespace UI.Game
+public class SaveCountDead : MonoBehaviour
 {
-    public class SaveCountDead : MonoBehaviour
+    [SerializeField]
+    private GameOver _gameOver;
+
+    /// <summary>
+    /// Сохраняет количество смертей в PlayerPrefs.
+    /// </summary>
+    internal void SaveDeadCount()
     {
-        [SerializeField]
-        private GameOver _gameOver;
+        PlayerPrefs.SetInt(GameOver.DeadCountKey, _gameOver.deadCount);
+        PlayerPrefs.Save();
+    }
 
-        internal void SaveDeadCount()
+    /// <summary>
+    /// Загружает количество смертей из PlayerPrefs.
+    /// </summary>
+    internal void LoadDeadCount()
+    {
+        if (PlayerPrefs.HasKey(GameOver.DeadCountKey))
         {
-            PlayerPrefs.SetInt(GameOver.DeadCountKey, _gameOver.deadCount);
-            PlayerPrefs.Save();
+            _gameOver.deadCount = PlayerPrefs.GetInt(GameOver.DeadCountKey);
         }
-
-        internal void LoadDeadCount()
+        else
         {
-            if (PlayerPrefs.HasKey(GameOver.DeadCountKey))
-            {
-                _gameOver.deadCount = PlayerPrefs.GetInt(GameOver.DeadCountKey);
-            }
-            else
-            {
-                _gameOver.deadCount = 0;
-            }
+            _gameOver.deadCount = 0;
         }
     }
 }

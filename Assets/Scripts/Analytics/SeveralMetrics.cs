@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Metrics
+// Класс для объединения нескольких компонентов метрик
+public class SeveralMetrics : AbstractMetrics
 {
-    public class SeveralMetrics : AbstractMetrics
-    {
-        [SerializeField] private List<AbstractMetrics> list = new();
+    // Список компонентов метрик, в которых будет выполняться отправка
+    [SerializeField] private List<AbstractMetrics> list = new();
 
-        public override void Send(string eventName, IReadOnlyDictionary<string, string> options)
+    // Переопределенный метод для отправки аналитического события с параметрами
+    public override void Send(string eventName, IReadOnlyDictionary<string, string> options)
+    {
+        // Проход по всем компонентам метрик из списка и отправка события в каждый из них
+        foreach (var metrics in list)
         {
-            foreach (var metrics in list)
-            {
-                metrics.Send(eventName, options);
-            }
+            metrics.Send(eventName, options);
         }
     }
 }

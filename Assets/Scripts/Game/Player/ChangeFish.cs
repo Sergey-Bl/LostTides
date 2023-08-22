@@ -1,21 +1,32 @@
 using UnityEngine;
 
-namespace UI.Player
+public class ChangeFish : MonoBehaviour
 {
-    public class ChangeFish : MonoBehaviour
+    public MeshFilter fishMeshFilter;
+
+    /// <summary>
+    /// Применяет новую сетку (меш) к рыбе.
+    /// </summary>
+    /// <param name="newMesh">Новая сетка рыбы.</param>
+    public void ApplyNewFishMesh(Mesh newMesh)
     {
-        public MeshFilter fishMeshFilter;
+        // Проверяем, что сетка рыбы доступна.
+        if (fishMeshFilter == null) return;
 
-        public void ApplyNewFishMesh(Mesh newMesh)
-        {
-            if (fishMeshFilter == null) return;
-            fishMeshFilter.mesh = newMesh;
+        // Присваиваем новую сетку рыбы.
+        fishMeshFilter.mesh = newMesh;
 
-            transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);
-            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-            if (boxCollider == null) return;
-            boxCollider.size = new Vector2(1.01f, 0.43f);
-            boxCollider.offset = new Vector2(-0.04f, 0f);
-        }
+        // Устанавливаем новый масштаб для рыбы.
+        transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);
+
+        // Получаем компонент коллайдера типа "BoxCollider2D".
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+
+        // Проверяем, что коллайдер доступен.
+        if (boxCollider == null) return;
+
+        // Устанавливаем новый размер и смещение коллайдера.
+        boxCollider.size = new Vector2(1.01f, 0.43f);
+        boxCollider.offset = new Vector2(-0.04f, 0f);
     }
 }

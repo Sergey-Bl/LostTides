@@ -1,25 +1,24 @@
 using TMPro;
-using UI.Player;
 using UnityEngine;
 
 public class Record : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _recordText;
+    private TextMeshProUGUI _recordText; // Ссылка на компонент TextMeshProUGUI для отображения рекорда.
     [SerializeField]
-    private DistanceLoader _distanceLoader;
+    private DistanceLoader _distanceLoader; // Ссылка на компонент DistanceLoader для загрузки длинного расстояния.
 
     public void DisplayRecords()
     {
-        _distanceLoader.LoadLongestDistance();
-        float recordDistance = _distanceLoader.longestDistance;
-        string recordsString = $"YOUR RECORD: {recordDistance:#}m";
+        _distanceLoader.LoadLongestDistance(); // Загружаем длинное расстояние из сохраненных данных.
+        float recordDistance = _distanceLoader.longestDistance; // Получаем длинное расстояние из DistanceLoader.
+        string recordsString = $"YOUR RECORD: {recordDistance:#}m"; // Формируем строку для отображения рекорда.
 
-        _recordText.text = recordsString;
+        _recordText.text = recordsString; // Присваиваем сформированную строку компоненту TextMeshProUGUI для отображения рекорда.
     }
 
-    public void Start()
+    private void Start()
     {
-        DisplayRecords();
+        DisplayRecords(); // Вызываем метод DisplayRecords() при запуске компонента для отображения рекорда.
     }
 }

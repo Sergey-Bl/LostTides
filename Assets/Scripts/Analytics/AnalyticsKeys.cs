@@ -1,23 +1,32 @@
+// Подключение необходимых пространств имен
 using System.Collections.Generic;
 using UnityEngine;
 
+// Пространство имен Metrics, содержащее класс AnalyticsKeys
 namespace Metrics
 {
+    // Класс, отвечающий за аналитику ключей
     public class AnalyticsKeys : MonoBehaviour
     {
-        [SerializeField] 
+        // Поле для ссылки на компонент GameOver
+        [SerializeField]
         private GameOver _gameOver;
+
+        // Поле для ссылки на абстрактный компонент метрик
         [SerializeField]
         private AbstractMetrics _metrics;
 
+        // Метод для отправки аналитики при завершении игры
         public void GameOverAnalytic()
         {
+            // Создание словаря параметров для события "gameOver"
             var eventOptions = new Dictionary<string, string>
             {
                 { "DeathCount", _gameOver.deadCount.ToString() }
             };
-            _metrics.Send("gameOver" + eventOptions);
+
+            // Отправка аналитики события "gameOver" с параметрами
+            _metrics.Send("gameOver", eventOptions);
         }
-        
     }
 }
