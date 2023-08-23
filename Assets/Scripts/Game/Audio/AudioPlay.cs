@@ -1,6 +1,8 @@
 using UnityEngine;
 
 // Класс для управления аудио в игре
+//По мере добавление звуков класс будет раздуваться, лучше использовать звук в своём контексте
+//Для общего менеджмента звуков можно использовать микшер
 public class AudioPlay : MonoBehaviour
 {
     // Звук для воспроизведения при завершении игры
@@ -16,6 +18,7 @@ public class AudioPlay : MonoBehaviour
     private AudioSource _collectCoin;
 
     // Остановка фоновой музыки
+    //Для Методов стоит соблюдать PascalCase
     internal void musicStop()
     {
         _backSound.Stop();

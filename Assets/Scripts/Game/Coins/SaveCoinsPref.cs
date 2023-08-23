@@ -1,6 +1,7 @@
 using UnityEngine;
 
 // Класс для сохранения и загрузки количества монет
+// SaveCoinsPref и CoinCollect можно объеденить в одну сущность Coins, эти 2 класса очень тесно связаны между собой
 public class SaveCoinsPref : MonoBehaviour
 {
     // Ссылка на компонент сбора монет

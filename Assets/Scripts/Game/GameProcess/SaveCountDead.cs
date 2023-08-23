@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Идентично с SaveCoinsPlef
 public class SaveCountDead : MonoBehaviour
 {
     [SerializeField]

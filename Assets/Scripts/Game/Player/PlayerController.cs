@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float tapForce = 10f;
     [SerializeField]
-    private GameObject _tutorText;
+    private GameObject _tutorText;//очень странно что игрок знает про туториал, по идее это не его ответственность
     [SerializeField]
     private UpdateDisplayDistance _updateDisplayDistance;
     [SerializeField]

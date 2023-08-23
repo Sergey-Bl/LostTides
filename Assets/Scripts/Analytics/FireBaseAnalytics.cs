@@ -1,22 +1,24 @@
 using System.Collections.Generic;
+using System.Linq;
 using Firebase.Analytics;
 
 // Класс для отправки аналитики через Firebase Analytics
+
+//Рекомендую сохранять стркутуру назвнания для удобства:
+//либо FireBaseAnalytics : AbstractAnalytics
+//либо FireBaseMetrics : AbstractMetrics
 public class FireBaseAnalytics : AbstractMetrics
 {
+    //Можно меньше комментариев, хороший код говорит сам за себя
     // Переопределенный метод для отправки аналитического события с параметрами
     public override void Send(string eventName, IReadOnlyDictionary<string, string> options)
     {
-        // Создание списка параметров для Firebase Analytics
-        List<Parameter> parameters = new List<Parameter>();
-
-        // Проход по всем параметрам и добавление их в список
-        foreach (var option in options)
-        {
-            parameters.Add(new Parameter(option.Key, option.Value));
-        }
-
-        // Отправка аналитического события с параметрами в Firebase Analytics
-        FirebaseAnalytics.LogEvent(eventName, parameters.ToArray());
+        //в этом случае можно использовать linq
+        FirebaseAnalytics.LogEvent(
+            eventName,
+            options
+                .Select(e => new Parameter(e.Key, e.Value))
+                .ToArray()
+        );
     }
 }

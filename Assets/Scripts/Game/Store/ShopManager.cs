@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 
+//Слово Manager мусорное, не несёт смысловой нагрузки
 public class ShopManager : MonoBehaviour
 {
     [SerializeField]

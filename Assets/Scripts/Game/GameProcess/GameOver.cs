@@ -49,7 +49,7 @@ public class GameOver : MonoBehaviour
 
     internal void UpdateDeadCountDisplay()
     {
-        _deadCountField.text = ($"x" + deadCount); // Обновление текста с отображением количества смертей
+        _deadCountField.text = $"x{deadCount}"; //Использовать Интерполяцию // Обновление текста с отображением количества смертей
     }
 
     public void HandleGameOver()

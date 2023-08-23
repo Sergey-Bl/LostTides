@@ -19,13 +19,16 @@ public class DistanceLoader : MonoBehaviour
     /// </summary>
     public void LoadLongestDistance()
     {
-        if (PlayerPrefs.HasKey(LongestDistanceKey))
-        {
-            longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey);
-        }
-        else
-        {
-            longestDistance = 0f;
-        }
+        //можно сделать в одну строчку 
+        longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey, 0);
+        // if (PlayerPrefs.HasKey(LongestDistanceKey))
+        // {
+        //     longestDistance = PlayerPrefs.GetFloat(LongestDistanceKey);
+        // }
+        // else
+        // {
+        //     longestDistance = 0f;
+        // }
+        
     }
 }

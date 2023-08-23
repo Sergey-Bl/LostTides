@@ -8,6 +8,7 @@ public class MenuAlatyticsButtons : MonoBehaviour
     private AbstractMetrics metrics;
 
     // Метод для отправки аналитики при нажатии на кнопку Play в меню уровня 1
+    // Очень нестабильная связь между кнопкой и отправкой метрики, не рекомендую делать большую логику на стороне едитора, лучше использовать декоратор 
     public void PlayTap()
     {
         metrics.Send("playButtonTapLevel1");

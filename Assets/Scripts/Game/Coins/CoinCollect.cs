@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinCollect : MonoBehaviour
 {
     // Поле для отображения количества монет
+    // Не очень хорошо что бизнес класс знает про UI, лучше сделать событие UnityEvent<int> onCountUpdate где подписывается UI
     [SerializeField]
     private TextMeshProUGUI _coinField;
 

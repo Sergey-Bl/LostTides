@@ -17,7 +17,7 @@ public class ChangeFish : MonoBehaviour
         fishMeshFilter.mesh = newMesh;
 
         // Устанавливаем новый масштаб для рыбы.
-        transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);
+        transform.localScale = new Vector3(0.5285938f, 0.7903844f, 2f);//магические числа, вынести в конфиг
 
         // Получаем компонент коллайдера типа "BoxCollider2D".
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
@@ -26,7 +26,7 @@ public class ChangeFish : MonoBehaviour
         if (boxCollider == null) return;
 
         // Устанавливаем новый размер и смещение коллайдера.
-        boxCollider.size = new Vector2(1.01f, 0.43f);
-        boxCollider.offset = new Vector2(-0.04f, 0f);
+        boxCollider.size = new Vector2(1.01f, 0.43f);//магические числа, вынести в конфиг
+        boxCollider.offset = new Vector2(-0.04f, 0f);//магические числа, вынести в конфиг
     }
 }

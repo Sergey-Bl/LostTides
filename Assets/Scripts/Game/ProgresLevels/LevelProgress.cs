@@ -11,6 +11,7 @@ public static class LevelProgress
     }
 
     // Устанавливает состояние пройденности первого уровня.
+    //Где второй уровень? Слишком большая привязка на количество уровней, плюс статика, не переиспользуемо
     public static void SetLevel1Passed(bool passed)
     {
         PlayerPrefs.SetInt(Level1Key, passed ? 1 : 0);
