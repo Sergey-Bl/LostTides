@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class BuyManager : MonoBehaviour
 {
-    [SerializeField]
-    private ShopManager shopManager;
-    [SerializeField]
-    private CoinCollect coinCollect;
-    [SerializeField]
-    private ChangeFish changeFish;
-    [SerializeField]
-    private AbstractMetrics metrics;
+    [SerializeField] private
+        ShopManager shopManager;
+    [SerializeField] private
+        CoinCollect coinCollect;
+    [SerializeField] private
+        ChangeFish changeFish;
+    [SerializeField] private
+        AbstractMetrics metrics;
 
     public void BuyFish(int fishIndex)
     {

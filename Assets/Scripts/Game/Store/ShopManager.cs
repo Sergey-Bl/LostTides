@@ -6,14 +6,15 @@ public class ShopManager : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI _coinText;
 
-    [SerializeField]
-    private int[] fishPrices;
-    [SerializeField]
-    private SaveCoinsPref saveCoinsPref;
-    [SerializeField]
-    private Mesh[] fishMeshes;
+    [SerializeField] private
+        CoinCollect _coinCollect;
+    [SerializeField] private int[]
+        fishPrices;
+    [SerializeField] private Mesh[]
+        fishMeshes;
 
-    private int currentFishMeshIndex;
+    private int
+        currentFishMeshIndex;
 
     private void Start()
     {
@@ -22,12 +23,12 @@ public class ShopManager : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        saveCoinsPref.LoadCoins();
+        _coinCollect.LoadCoins();
     }
 
     public void SavePlayerData()
     {
-        saveCoinsPref.SaveCoins();
+        _coinCollect.SaveCoins();
     }
 
     public int CalculateFishPrice(int fishIndex)
@@ -45,11 +46,7 @@ public class ShopManager : MonoBehaviour
 
     public Mesh GetCurrentFishMesh()
     {
-        if (currentFishMeshIndex < fishMeshes.Length)
-        {
-            return fishMeshes[currentFishMeshIndex];
-        }
-        return null;
+        return currentFishMeshIndex < fishMeshes.Length ? fishMeshes[currentFishMeshIndex] : null;
     }
 
     public void FreezeWhenOpenWindow()

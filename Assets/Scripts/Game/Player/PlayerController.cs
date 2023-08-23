@@ -2,29 +2,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float forwardSpeed = 5f;
-    [SerializeField]
-    private float tapForce = 10f;
-    [SerializeField]
-    private GameObject _tutorText;
-    [SerializeField]
-    private UpdateDisplayDistance _updateDisplayDistance;
-    [SerializeField]
-    private DistanceLoader _distanceLoader;
-    [SerializeField]
-    private GameOver _gameOver;
-    [SerializeField]
-    private Record _record;
-    [SerializeField]
-    private ChangeFish _changeFish;
-    [SerializeField]
-    private AbstractMetrics metrics;
+    [SerializeField] private float
+        forwardSpeed = 5f;
+    [SerializeField] private float
+        tapForce = 10f;
+    [SerializeField] private
+        GameObject _tutorText;
+    [SerializeField] private
+        UpdateDisplayDistance _updateDisplayDistance;
+    [SerializeField] private
+        DistanceLoader _distanceLoader;
+    [SerializeField] private
+        GameOver _gameOver;
+    [SerializeField] private
+        Record _record;
+    [SerializeField] private
+        ChangeFish _changeFish;
+    [SerializeField] private
+        AbstractMetrics metrics;
 
-    private bool waitingForInput = true;
-    private Rigidbody2D rb;
-    private int defaultFishMeshIndex = 0;
-    private AudioPlay _audioPlay;
+    private bool 
+        waitingForInput = true;
+    private 
+        Rigidbody2D rb;
+    private int 
+        defaultFishMeshIndex = 0;
+    private 
+        AudioPlay _audioPlay;
 
     public float distanceTraveled { private set; get; }
 

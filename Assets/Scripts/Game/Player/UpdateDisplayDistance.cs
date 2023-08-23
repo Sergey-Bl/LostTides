@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class UpdateDisplayDistance : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerController _playerController;
-    [SerializeField]
-    private DistanceLoader _distanceLoader;
+    [SerializeField] private
+        PlayerController _playerController;
+    [SerializeField] private
+        DistanceLoader _distanceLoader;
 
-    [SerializeField]
-    private TextMeshProUGUI _distanceText;
-    [SerializeField]
-    private TextMeshProUGUI _distanceTextAfterLoose;
-    [SerializeField]
-    private TextMeshProUGUI _longestDistanceText;
+    [SerializeField] private
+        TextMeshProUGUI _distanceText;
+    [SerializeField] private
+        TextMeshProUGUI _distanceTextAfterLoose;
+    [SerializeField] private
+        TextMeshProUGUI _longestDistanceText;
 
     public void UpdateDistanceDisplay()
     {

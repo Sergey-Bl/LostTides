@@ -5,15 +5,15 @@ public class CoinCollect : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _coinField;
-
-    [SerializeField]
-    private SaveCoinsPref _saveCoinsPref;
+    
 
     public int Coins;
 
+    private const string CoinsKey = "Coins";
+
     private void Start()
     {
-        _saveCoinsPref.LoadCoins();
+        LoadCoins();
         UpdateCoinDisplay();
     }
 
@@ -29,11 +29,22 @@ public class CoinCollect : MonoBehaviour
         Coins++;
         UpdateCoinDisplay();
 
-        _saveCoinsPref.SaveCoins();
+        SaveCoins();
     }
 
     private void UpdateCoinDisplay()
     {
         _coinField.text = ($"x" + Coins);
+    }
+
+    internal void SaveCoins()
+    {
+        PlayerPrefs.SetInt(CoinsKey, Coins);
+        PlayerPrefs.Save();
+    }
+
+    internal void LoadCoins()
+    {
+        Coins = PlayerPrefs.HasKey(CoinsKey) ? PlayerPrefs.GetInt(CoinsKey) : 0;
     }
 }
