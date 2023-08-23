@@ -4,42 +4,42 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField]
-    public TextMeshProUGUI _coinText; // Текстовое поле для отображения количества монет.
+    public TextMeshProUGUI _coinText;
 
     [SerializeField]
-    private int[] fishPrices; // Массив цен на разные рыбы.
+    private int[] fishPrices;
     [SerializeField]
-    private SaveCoinsPref saveCoinsPref; // Ссылка на компонент сохранения монет.
+    private SaveCoinsPref saveCoinsPref;
     [SerializeField]
-    private Mesh[] fishMeshes; // Массив мешей для разных рыб.
+    private Mesh[] fishMeshes;
 
-    private int currentFishMeshIndex; // Индекс текущего выбранного меша рыбы.
+    private int currentFishMeshIndex;
 
     private void Start()
     {
-        LoadPlayerData(); // Загружаем данные игрока при старте.
+        LoadPlayerData();
     }
 
     private void LoadPlayerData()
     {
-        saveCoinsPref.LoadCoins(); // Загружаем количество монет игрока.
+        saveCoinsPref.LoadCoins();
     }
 
     public void SavePlayerData()
     {
-        saveCoinsPref.SaveCoins(); // Сохраняем количество монет игрока.
+        saveCoinsPref.SaveCoins();
     }
 
     public int CalculateFishPrice(int fishIndex)
     {
-        return fishPrices[fishIndex]; // Возвращает цену для выбранной рыбы.
+        return fishPrices[fishIndex];
     }
 
     public void UpdateFishMesh(int fishIndex)
     {
         if (fishIndex < fishMeshes.Length)
         {
-            currentFishMeshIndex = fishIndex; // Обновляем индекс текущего меша рыбы.
+            currentFishMeshIndex = fishIndex;
         }
     }
 
@@ -47,13 +47,13 @@ public class ShopManager : MonoBehaviour
     {
         if (currentFishMeshIndex < fishMeshes.Length)
         {
-            return fishMeshes[currentFishMeshIndex]; // Возвращает текущий меш рыбы.
+            return fishMeshes[currentFishMeshIndex];
         }
         return null;
     }
 
     public void FreezeWhenOpenWindow()
     {
-        Time.timeScale = 0f; // Замораживаем время при открытии окна магазина.
+        Time.timeScale = 0f;
     }
 }

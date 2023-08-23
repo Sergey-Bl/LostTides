@@ -3,35 +3,29 @@ using UnityEngine;
 public class BuyManager : MonoBehaviour
 {
     [SerializeField]
-    private ShopManager shopManager; // Ссылка на менеджер магазина.
+    private ShopManager shopManager;
     [SerializeField]
-    private CoinCollect coinCollect; // Ссылка на сборщика монет.
+    private CoinCollect coinCollect;
     [SerializeField]
-    private ChangeFish changeFish; // Ссылка на компонент смены рыбы.
+    private ChangeFish changeFish;
     [SerializeField]
-    private AbstractMetrics metrics; // Ссылка на абстрактный компонент аналитики.
+    private AbstractMetrics metrics;
 
-    // Покупает выбранную рыбу по указанному индексу.
     public void BuyFish(int fishIndex)
     {
         int fishPrice = shopManager.CalculateFishPrice(fishIndex);
 
-        // Проверяем, достаточно ли монет для покупки рыбы.
         if (coinCollect.Coins < fishPrice) return;
 
-        metrics.Send("BuyFISH"); // Отправляем аналитику о покупке рыбы.
+        metrics.Send("BuyFISH");
 
-        coinCollect.Coins -= fishPrice; // Вычитаем стоимость рыбы из монет.
-
-        shopManager.SavePlayerData(); // Сохраняем данные игрока.
-
-        shopManager._coinText.text = $"x{coinCollect.Coins}"; // Обновляем текст с количеством монет.
-
-        shopManager.UpdateFishMesh(fishIndex); // Обновляем внешний вид рыбы в магазине.
+        coinCollect.Coins -= fishPrice;
+        shopManager.SavePlayerData();
+        shopManager._coinText.text = $"x{coinCollect.Coins}";
+        shopManager.UpdateFishMesh(fishIndex);
 
         Mesh newFishMesh = shopManager.GetCurrentFishMesh();
 
-        // Применяем новый меш к рыбе, если он доступен.
         if (newFishMesh != null)
         {
             changeFish.ApplyNewFishMesh(newFishMesh);

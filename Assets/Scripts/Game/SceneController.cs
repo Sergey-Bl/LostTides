@@ -6,11 +6,11 @@ namespace UI
     public class SceneController : MonoBehaviour
     {
         [SerializeField]
-        private string sceneName; // Имя сцены для загрузки.
+        private string sceneName;
 
         public void SceneLoad()
         {
-            SceneManager.LoadScene(sceneName); // Загружает указанную сцену.
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

@@ -1,55 +1,55 @@
-using Metrics; // Импорт пространства имен Metrics для доступа к компонентам метрик
+using Metrics;
 using TMPro;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _deadCountField; // Поле для отображения количества смертей
+    private TextMeshProUGUI _deadCountField;
     [SerializeField]
-    private GameObject restartPopUp; // Объект всплывающего окна после завершения игры
+    private GameObject restartPopUp;
     [SerializeField]
-    private PlayerController _playerController; // Ссылка на компонент управления игроком
+    private PlayerController _playerController;
     [SerializeField]
-    private AnalyticsKeys _analyticsKeys; // Ссылка на компонент для аналитики
+    private AnalyticsKeys _analyticsKeys;
     [SerializeField]
-    private SaveCountDead _saveCountDead; // Ссылка на компонент для сохранения количества смертей
+    private SaveCountDead _saveCountDead;
     [SerializeField]
-    private UpdateDisplayDistance _updateDisplayDistance; // Ссылка на компонент для обновления отображения дистанции
+    private UpdateDisplayDistance _updateDisplayDistance;
     [SerializeField]
-    private DistanceLoader _distanceLoader; // Ссылка на компонент для загрузки дистанции
+    private DistanceLoader _distanceLoader;
 
-    internal const string DeadCountKey = "DeadCount"; // Ключ для сохранения количества смертей в PlayerPrefs
-    public int deadCount; // Текущее количество смертей
+    internal const string DeadCountKey = "DeadCount";
+    public int deadCount;
 
     private void Start()
     {
-        _saveCountDead.LoadDeadCount(); // Загрузка количества смертей из сохранений
-        UpdateDeadCountDisplay(); // Обновление отображения количества смертей
+        _saveCountDead.LoadDeadCount();
+        UpdateDeadCountDisplay();
     }
 
     public void GameOverInit()
     {
-        restartPopUp.SetActive(true); // Активация всплывающего окна
+        restartPopUp.SetActive(true);
 
         deadCount++;
-        UpdateDeadCountDisplay(); // Обновление отображения количества смертей
-        _saveCountDead.SaveDeadCount(); // Сохранение количества смертей
+        UpdateDeadCountDisplay();
+        _saveCountDead.SaveDeadCount();
 
-        _distanceLoader.SaveLongestDistance(); // Сохранение наибольшей дистанции
+        _distanceLoader.SaveLongestDistance();
 
-        _analyticsKeys.GameOverAnalytic(); // Вызов метода аналитики для завершения игры
+        _analyticsKeys.GameOverAnalytic();
 
-        AudioPlay audioPlay = GetComponent<AudioPlay>(); // Получение компонента воспроизведения аудио
-        audioPlay.musicStop(); // Остановка музыки
-        audioPlay.gameOverSound(); // Воспроизведение звука завершения игры
+        AudioPlay audioPlay = GetComponent<AudioPlay>();
+        audioPlay.musicStop();
+        audioPlay.gameOverSound();
 
-        Time.timeScale = 0f; // Остановка времени игры
+        Time.timeScale = 0f;
     }
 
     internal void UpdateDeadCountDisplay()
     {
-        _deadCountField.text = ($"x" + deadCount); // Обновление текста с отображением количества смертей
+        _deadCountField.text = $"x{deadCount}";
     }
 
     public void HandleGameOver()
@@ -60,9 +60,9 @@ public class GameOver : MonoBehaviour
             _distanceLoader.SaveLongestDistance();
         }
 
-        _updateDisplayDistance.UpdateDistanceDisplay(); // Обновление отображения дистанции
-        _updateDisplayDistance.UpdateDistanceWhenLose(); // Обновление дистанции при проигрыше
+        _updateDisplayDistance.UpdateDistanceDisplay();
+        _updateDisplayDistance.UpdateDistanceWhenLose();
 
-        GameOverInit(); // Вызов метода инициализации завершения игры
+        GameOverInit();
     }
 }

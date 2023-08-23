@@ -3564,8 +3564,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1722484770}
-        m_TargetAssemblyTypeName: UI.Game.CountReset, Assembly-CSharp
-        m_MethodName: RestDistance
+        m_TargetAssemblyTypeName: CountReset, Assembly-CSharp
+        m_MethodName: ResetDistance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
