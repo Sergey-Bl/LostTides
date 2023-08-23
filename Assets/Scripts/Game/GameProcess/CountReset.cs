@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class CountReset : MonoBehaviour
 {
-    private GameOver gameOver;
-    [SerializeField]
-    private AbstractMetrics metrics;
+    private 
+        GameOver gameOver;
+    [SerializeField] private 
+        AbstractMetrics metrics;
 
     public void ResetDeadCount()
     {

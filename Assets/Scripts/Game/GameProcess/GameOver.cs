@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI _deadCountField;
-    [SerializeField]
-    private GameObject restartPopUp;
-    [SerializeField]
-    private PlayerController _playerController;
-    [SerializeField]
-    private AnalyticsKeys _analyticsKeys;
-    [SerializeField]
-    private SaveCountDead _saveCountDead;
-    [SerializeField]
-    private UpdateDisplayDistance _updateDisplayDistance;
-    [SerializeField]
-    private DistanceLoader _distanceLoader;
+    [SerializeField] private
+        TextMeshProUGUI _deadCountField;
+    [SerializeField] private
+        GameObject restartPopUp;
+    [SerializeField] private
+        PlayerController _playerController;
+    [SerializeField] private
+        AnalyticsKeys _analyticsKeys;
+    [SerializeField] private
+        UpdateDisplayDistance _updateDisplayDistance;
+    [SerializeField] private
+        DistanceLoader _distanceLoader;
 
     internal const string DeadCountKey = "DeadCount";
-    public int deadCount;
+    public int deadCount { get; private set; }
 
     private void Start()
     {
-        _saveCountDead.LoadDeadCount();
+        LoadDeadCount();
         UpdateDeadCountDisplay();
     }
 
@@ -34,7 +32,7 @@ public class GameOver : MonoBehaviour
 
         deadCount++;
         UpdateDeadCountDisplay();
-        _saveCountDead.SaveDeadCount();
+        SaveDeadCount();
 
         _distanceLoader.SaveLongestDistance();
 
@@ -64,5 +62,16 @@ public class GameOver : MonoBehaviour
         _updateDisplayDistance.UpdateDistanceWhenLose();
 
         GameOverInit();
+    }
+
+    internal void SaveDeadCount()
+    {
+        PlayerPrefs.SetInt(DeadCountKey, deadCount);
+        PlayerPrefs.Save();
+    }
+
+    internal void LoadDeadCount()
+    {
+        deadCount = PlayerPrefs.HasKey(DeadCountKey) ? PlayerPrefs.GetInt(DeadCountKey) : 0;
     }
 }

@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class CoinCollect : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI _coinField;
-    
+    [SerializeField] private
+        TextMeshProUGUI _coinField;
 
     public int Coins;
 

@@ -21,13 +21,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private
         AbstractMetrics metrics;
 
-    private bool 
+    private bool
         waitingForInput = true;
-    private 
+    private
         Rigidbody2D rb;
-    private int 
+    private int
         defaultFishMeshIndex = 0;
-    private 
+    private
         AudioPlay _audioPlay;
 
     public float distanceTraveled { private set; get; }

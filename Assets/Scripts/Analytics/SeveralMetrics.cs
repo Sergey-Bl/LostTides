@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SeveralMetrics : AbstractMetrics
 {
-    [SerializeField] private List<AbstractMetrics> list = new();
+    [SerializeField] private
+        List<AbstractMetrics> list = new();
 
     public override void Send(string eventName, IReadOnlyDictionary<string, string> options)
     {

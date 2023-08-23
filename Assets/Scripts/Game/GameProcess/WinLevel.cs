@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class WinLevel : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject winPopUp;
-
-    [SerializeField]
-    private AbstractMetrics metrics;
+    [SerializeField] private
+        GameObject winPopUp;
+    [SerializeField] private
+        AbstractMetrics metrics;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

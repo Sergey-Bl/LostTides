@@ -7,11 +7,11 @@ namespace Metrics
 {
     public class AnalyticsKeys : MonoBehaviour
     {
-        [SerializeField]
-        private GameOver _gameOver;
+        [SerializeField] private 
+            GameOver _gameOver;
 
-        [SerializeField]
-        private AbstractMetrics _metrics;
+        [SerializeField] private 
+            AbstractMetrics _metrics;
 
         public void GameOverAnalytic()
         {

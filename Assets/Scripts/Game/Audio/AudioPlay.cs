@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class AudioPlay : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource _gameOver;
-
-    [SerializeField]
-    private AudioSource _backSound;
-
-    [SerializeField]
-    private AudioSource _collectCoin;
+    [SerializeField] private
+        AudioSource _gameOver;
+    [SerializeField] private
+        AudioSource _backSound;
+    [SerializeField] private
+        AudioSource _collectCoin;
 
     internal void musicStop()
     {

@@ -7,7 +7,6 @@ public class UpdateDisplayDistance : MonoBehaviour
         PlayerController _playerController;
     [SerializeField] private
         DistanceLoader _distanceLoader;
-
     [SerializeField] private
         TextMeshProUGUI _distanceText;
     [SerializeField] private

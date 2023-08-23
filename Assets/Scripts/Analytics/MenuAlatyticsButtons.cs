@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MenuAlatyticsButtons : MonoBehaviour
 {
-    [SerializeField]
-    private AbstractMetrics metrics;
+    [SerializeField] private 
+        AbstractMetrics metrics;
 
     public void PlayTap()
     {

@@ -3,8 +3,8 @@ using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
-    [SerializeField]
-    private AudioMixer _audioMixer;
+    [SerializeField] private
+        AudioMixer _audioMixer;
 
     public void SetVolume(float volume)
     {
