@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        _changeFish.fishMeshFilter = GetComponent<MeshFilter>();
+        _changeFish.fishSkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
     }
 
     private void Start()
@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                _audioPlay.tapPlayer();
                 rb.velocity = new Vector2(rb.velocity.x, tapForce);
             }
 

@@ -8,6 +8,8 @@ public class AudioPlay : MonoBehaviour
         AudioSource _backSound;
     [SerializeField] private
         AudioSource _collectCoin;
+    [SerializeField] private
+        AudioSource _tapPlayer;
 
     internal void musicStop()
     {
@@ -27,5 +29,10 @@ public class AudioPlay : MonoBehaviour
     internal void collectSound()
     {
         _collectCoin.Play();
+    }
+
+    internal void tapPlayer()
+    {
+        _tapPlayer.Play();
     }
 }

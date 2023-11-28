@@ -1,5 +1,3 @@
-// Подключение необходимых пространств имен
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +5,10 @@ namespace Metrics
 {
     public class AnalyticsKeys : MonoBehaviour
     {
-        [SerializeField] private 
+        [SerializeField] private
             GameOver _gameOver;
 
-        [SerializeField] private 
+        [SerializeField] private
             AbstractMetrics _metrics;
 
         public void GameOverAnalytic()

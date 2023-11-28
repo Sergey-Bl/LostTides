@@ -24,11 +24,11 @@ public class BuyManager : MonoBehaviour
         shopManager._coinText.text = $"x{coinCollect.Coins}";
         shopManager.UpdateFishMesh(fishIndex);
 
-        Mesh newFishMesh = shopManager.GetCurrentFishMesh();
+        SkinnedMeshRenderer newFishRenderer = shopManager.GetCurrentFishRenderer();
 
-        if (newFishMesh != null)
+        if (newFishRenderer != null)
         {
-            changeFish.ApplyNewFishMesh(newFishMesh);
+            changeFish.ApplyNewFishSkinnedMeshRenderer(newFishRenderer);
         }
     }
 }
